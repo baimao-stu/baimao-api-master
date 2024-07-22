@@ -1,0 +1,36 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: api_route
+          uri: http://localhost:8111
+          predicates:
+            - Path=/api/**
+  main:
+    web-application-type: reactive
+
+#        - id: weight_high
+#          uri: http://www.bilibili.com
+#          predicates:
+#            - Weight=group1, 2
+#        - id: weight_low
+#          uri: http://www.baidu.com
+#          predicates:
+#            - Weight=group1, 8
+
+server:
+  port: 8090
+#logging:
+#  level:
+#    root: trace
+
+dubbo:
+  application:
+    name: dubbo-springboot-demo-consumer
+    logger: slf4j
+    qos-port: 33333
+  #  protocol:
+  #    name: dubbo
+  #    port: 50055
+  registry:
+    address: nacos://${nacos.address:127.0.0.1}:8848?username=nacos&password=nacos
