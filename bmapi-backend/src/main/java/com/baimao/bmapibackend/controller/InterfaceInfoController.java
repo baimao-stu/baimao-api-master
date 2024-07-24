@@ -182,9 +182,8 @@ public class InterfaceInfoController {
         User loginUser = userService.getLoginUser(request);
         String accessKey = loginUser.getAccessKey();
         String accessSecret = loginUser.getAccessSecret();
-        // todo 换成该接口本身的信息
         Object result = invokeInterfaceInfo(interfaceInfo.getSdkClient(),
-                interfaceInfo.getMethod(), interfaceInfo.getRequestParams(),
+                interfaceInfo.getMethod(), interfaceInfo.getParamExample(),
                 accessKey, accessSecret);
         if(result == null) {
             throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
@@ -289,12 +288,17 @@ public class InterfaceInfoController {
                     if(parameterTypes.length == 0) {
                         return method.invoke(apiClient);
                     }
+                    // 需要参数，但没有传递
+                    if(StringUtils.isBlank(requestParams)) {
+                        throw new BusinessException(ErrorCode.PARAMS_ERROR,"请传递参数！");
+                    }
                     Gson gson = new Gson();
                     Object parameter = gson.fromJson(requestParams, parameterTypes[0]);
                     return method.invoke(apiClient,parameter);
                 }
             }
         } catch (Exception e) {
+            e.printStackTrace();
             throw new BusinessException(ErrorCode.SYSTEM_ERROR, "找不到调用的方法!! 请检查你的请求参数是否正确!");
         }
         return null;

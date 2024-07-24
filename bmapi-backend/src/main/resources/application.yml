@@ -23,12 +23,12 @@ spring:
     password: root
   # Redis ??
   # todo ????????????
-  #  redis:
-  #    database: 1
-  #    host: localhost
-  #    port: 6379
-  #    timeout: 5000
-  #    password: 123456
+  redis:
+    database: 1
+    host: localhost
+    port: 6379
+    timeout: 5000
+  #      password: 123456
   # Elasticsearch ??
   # todo ????????????
   #  elasticsearch:
@@ -85,3 +85,4 @@ dubbo:
     port: 50052
   registry:
     address: nacos://${nacos.address:127.0.0.1}:8848?username=nacos&password=nacos
+

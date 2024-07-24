@@ -1,4 +1,4 @@
-package com.baimao.bmapigateway;
+package com.baimao.bmapigateway.filter;
 
 import cn.hutool.core.util.StrUtil;
 import com.baimao.bmapicommon.model.entity.InterfaceInfo;
@@ -26,8 +26,6 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import javax.servlet.http.HttpServletRequest;
-import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,7 +36,7 @@ import java.util.List;
  */
 @Component
 @Slf4j
-public class CustomGlobalFilter implements GlobalFilter, Ordered {
+public class InvokeGlobalFilter implements GlobalFilter, Ordered {
 
     //ip白名单
     private static final List<String> WHITE_IP = Arrays.asList("127.0.0.1");

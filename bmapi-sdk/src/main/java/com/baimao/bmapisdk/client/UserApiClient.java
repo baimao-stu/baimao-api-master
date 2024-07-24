@@ -5,6 +5,8 @@ import cn.hutool.http.HttpResponse;
 import cn.hutool.json.JSONUtil;
 import com.baimao.bmapicommon.model.entity.User;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @author baimao
  * @title UserApiClient

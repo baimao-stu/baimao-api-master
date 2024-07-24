@@ -22,7 +22,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/analysis")
 public class AnalysisController {
-
     @Resource
     private InterfaceInfoMapper interfaceInfoMapper;
 
